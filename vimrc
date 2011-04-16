@@ -33,6 +33,9 @@ augroup filetypedetect
   au BufNewFile,BufRead *.[ch] set filetype=cpp
 augroup END
 
+set directory=~/.backup
+set backupdir=~/.backup
+set backup
 set viminfo='10,\"100,:20,%
 set path+=,,..,.
 set hl-=l

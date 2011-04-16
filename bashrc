@@ -2,7 +2,7 @@
 
 # User specific aliases and functions
 alias vi=vim
-alias ls='ls -G'
+alias ls='ls -G --color'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
@@ -33,3 +33,6 @@ case $TERM in
   export PROMPT_COMMAND="echo -ne \"\033]0;${PWD}\007\""
   ;;
 esac
+
+export PATH=$PATH:/src/go/bin
+export GOROOT=/src/go
