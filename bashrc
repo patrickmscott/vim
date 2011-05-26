@@ -30,7 +30,7 @@ export P4CONFIG=.p4config
 case $TERM in
   xterm*)
   #stty erase ^\? kill ^U intr ^C -decctlq
-  export PROMPT_COMMAND="echo -ne \"\033]0;${PWD}\007\""
+  export PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
   ;;
 esac
 

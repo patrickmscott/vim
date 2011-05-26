@@ -31,6 +31,7 @@ augroup filetypedetect
   au BufNewFile,BufRead *.go setlocal noexpandtab filetype=go
   au BufNewFile,BufRead *.cpp set filetype=cpp
   au BufNewFile,BufRead *.[ch] set filetype=cpp
+  au BufNewFile,BufRead *.java setlocal ts=8 sw=4
 augroup END
 
 set directory=~/.backup
@@ -78,10 +79,10 @@ syn sync fromstart
 "set foldmethod=syntax
 
 " A few highlighting differences.
-hi Statement	term=bold cterm=NONE ctermfg=DarkMagenta ctermbg=NONE gui=bold guifg=#ffff60 guibg=NONE
+hi Statement	term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=bold guifg=#ffff60 guibg=NONE
 hi Number	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
 hi String	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
-hi Special term=underline cterm=NONE ctermfg=Cyan ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
+hi Special term=underline cterm=NONE ctermfg=DarkRed ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
 
 " -----------------------------------------------------
 
