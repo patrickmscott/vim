@@ -41,6 +41,10 @@ function! s:CIndent()
       return indent(v:lnum - 1) + (2 * &sw)
     endif
 
+    if prevline =~ '^\s*@[^\s]*$'
+      return indent(v:lnum - 1)
+    endif
+
     let left_shift_pos = stridx(prevline, "<<")
     if left_shift_pos >= 0
       " check if the paren level is 0 at the <<, as a heuristic that we're

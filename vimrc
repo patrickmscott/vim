@@ -1,6 +1,6 @@
 "allow backspacing over everything in insert mode
 set nocompatible        " Not backward compatible
-set background=dark     " I always use a dark background
+"set background=dark     " I always use a dark background
 
 " Turn on plugins and filetype indention
 filetype plugin on
@@ -29,9 +29,10 @@ augroup filetypedetect
   au BufNewFile,BufRead * setlocal textwidth=80
   au BufNewFile,BufRead * call HighlightTooLongLines()
   au BufNewFile,BufRead *.go setlocal noexpandtab filetype=go
-  au BufNewFile,BufRead *.cpp set filetype=cpp
-  au BufNewFile,BufRead *.[ch] set filetype=cpp
+  au BufNewFile,BufRead *.cc,*.cpp,*.c,*.h set filetype=cpp
   au BufNewFile,BufRead *.java setlocal ts=8 sw=4
+  au BufNewFile,BufRead *.proto setfiletype proto
+  au BufNewFile,BufRead *.thrift setfiletype thrift
 augroup END
 
 set directory=~/.backup
@@ -79,10 +80,10 @@ syn sync fromstart
 "set foldmethod=syntax
 
 " A few highlighting differences.
-hi Statement	term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=bold guifg=#ffff60 guibg=NONE
-hi Number	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
-hi String	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
-hi Special term=underline cterm=NONE ctermfg=DarkRed ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
+"hi Statement	term=bold cterm=NONE ctermfg=Magenta ctermbg=NONE gui=bold guifg=#ffff60 guibg=NONE
+"hi Number	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
+"hi String	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
+"hi Special term=underline cterm=NONE ctermfg=DarkRed ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
 
 " -----------------------------------------------------
 

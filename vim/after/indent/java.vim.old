@@ -1,0 +1,14 @@
+" Adds indentation alignment for annotations
+function! GetMyJavaIndent()
+  let theIndent = GetJavaIndent()
+  let lnum = prevnonblank(v:lnum - 1)
+  let line = getline(lnum)
+  if line =~ '^\s*@.*$'
+    let theIndent = indent(lnum)
+  endif
+
+  return theIndent
+endfunction
+
+setlocal indentexpr=GetMyJavaIndent()
+setlocal cinoptions+=+2s
