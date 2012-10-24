@@ -11,23 +11,14 @@ function! s:CountSubstring(haystack, needle)
   return n
 endfunction
 
-" If previous line ends with "(" then indent under previous line + 2
-" shiftwidths.
-"
 " If previous line contains "<<" at a paren-level of 0, ident the current line
 " to that position (cout << foo\n<< bar)
 "
+" Look for Java annotations on the previous line and indent the same as the
+" annotation.
+"
 " Otherwise, use built-in cindent rules.
 function! s:CIndent()
-
-  " No indent after namespace {
-  let prevnonblankline = prevnonblank(v:lnum - 1)
-  if prevnonblankline > 0
-    if getline(prevnonblankline) =~ '^\s*namespace\>.*{\s*$'
-      return indent(prevnonblankline)
-    endif
-  endif
-
   let default_indent = cindent(v:lnum)
   if (v:lnum > 1)
     " Do nothing on complete statements
@@ -37,11 +28,8 @@ function! s:CIndent()
 
     let prevline = getline(v:lnum - 1)
 
-    if prevline =~ '(\s*$'
-      return indent(v:lnum - 1) + (2 * &sw)
-    endif
-
-    if prevline =~ '^\s*@[^\s]*$'
+    " Java annotations
+    if prevline =~ '^\s*@\S\+\s*$'
       return indent(v:lnum - 1)
     endif
 
@@ -72,3 +60,8 @@ setlocal cinoptions+=+2s
 setlocal cinoptions+=(0
 setlocal cinoptions+=g1
 setlocal cinoptions+=h1
+setlocal cinoptions+=l1
+setlocal cinoptions+=p2s
+setlocal cinoptions+=N-s
+setlocal cinoptions+=W2s
+setlocal cinoptions+=i2s

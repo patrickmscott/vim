@@ -30,7 +30,6 @@ augroup filetypedetect
   au BufNewFile,BufRead * call HighlightTooLongLines()
   au BufNewFile,BufRead *.go setlocal noexpandtab filetype=go
   au BufNewFile,BufRead *.cc,*.cpp,*.c,*.h set filetype=cpp
-  au BufNewFile,BufRead *.java setlocal ts=8 sw=4
   au BufNewFile,BufRead *.proto setfiletype proto
   au BufNewFile,BufRead *.thrift setfiletype thrift
 augroup END
@@ -47,6 +46,7 @@ inoremap <S-Insert> <ESC>"+pi
 vnoremap ^C "+y
 
 nmap <tab> ==
+nmap <F8> mzgg=G`z
 
 " Don't show me the swap file messages and truncate lines by "..." if too long.
 set shortmess=AT

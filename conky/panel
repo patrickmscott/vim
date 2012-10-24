@@ -19,8 +19,8 @@ xftalpha 0.8
 # Update interval in seconds
 update_interval 1
 # Create own window instead of using desktop (required in nautilus)
-own_window no
-own_window_type override
+own_window yes
+own_window_type normal
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 # Use double buffering (reduces flicker, may not work for everyone)
