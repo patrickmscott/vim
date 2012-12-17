@@ -21,5 +21,4 @@ fi
 
 export VISUAL=vi
 export P4CONFIG=.p4config
-export PATH=$PATH:/src/go/bin:/opt/hypertable/current/bin:/var/lib/gems/1.8/bin
-export GOROOT=/src/go
+export PATH=$PATH:/opt/hypertable/current/bin:/var/lib/gems/1.8/bin

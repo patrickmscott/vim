@@ -73,7 +73,7 @@ ${cpugraph 9040e0 9040e0}
 ${diskiograph /dev/sda 30,150 cca000 cca000}$alignr${diskiograph /dev/sdb 30,150 cca000 cca000}
 ${color}RAM Usage: $mem/$memmax - $memperc% $membar
 ${voffset 10}
-Network
+${color}Network
 $hr
  Down: ${color #ffaa22}${downspeed eth0}$alignr${color}Up:${color #22ccff} ${upspeed eth0} 
 ${downspeedgraph eth0 30,150 ff0000 0000ff}$alignr${upspeedgraph eth0 30,150 0000ff ff0000}
