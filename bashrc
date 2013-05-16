@@ -1,5 +1,9 @@
 # .bashrc
 
+if [ -f /etc/bashrc ]; then
+  . /etc/bashrc
+fi
+
 # User specific aliases and functions
 alias vi=vim
 alias ls='ls -G --color'
@@ -15,10 +19,5 @@ alias ::::::='cd ../../../../../../'
 alias :::::::='cd ../../../../../../../'
 alias ::::::::='cd ../../../../../../../'
 
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
-fi
-
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
 export VISUAL=vi
-export P4CONFIG=.p4config
-export PATH=$PATH:/opt/hypertable/current/bin:/var/lib/gems/1.8/bin
