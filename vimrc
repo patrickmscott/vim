@@ -32,6 +32,7 @@ augroup filetypedetect
   au BufNewFile,BufRead *.cc,*.cpp,*.c,*.h set filetype=cpp
   au BufNewFile,BufRead *.proto setfiletype proto
   au BufNewFile,BufRead *.thrift setfiletype thrift
+  au BufNewFile,BufRead *.py setlocal sw=4
 augroup END
 
 set directory=~/.backup

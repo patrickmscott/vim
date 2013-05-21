@@ -74,9 +74,10 @@ ${voffset 10}
 ${font :bold:size=8}${color tan1}NETWORK ${color}${hr 2}${font}
  Down: ${color #ffaa22}${downspeed eth0}$alignr${color}Up:${color #22ccff} ${upspeed eth0} 
 ${downspeedgraph eth0 30,150 ff0000 0000ff}$alignr${upspeedgraph eth0 30,150 0000ff ff0000}
+${voffset 10}
 ${font :bold:size=8}${color tan1}FILE SYSTEM ${color}${hr 2}${font}${color}
 ${fs_used /}/${fs_size /} ${fs_bar /}
-${diskiograph /dev/sda 30,150 cca000 cca000}$alignr${diskiograph /dev/sdb 30,150 cca000 cca000}
+${diskiograph /dev/sda 30,150 802a2a 802a2a}$alignr${diskiograph /dev/sdb 30,150 802a2a 802a2a}
 ${voffset 10}
 ${font :bold:size=8}${color tan1}PROCESSES ${color}${hr 2}${font}
 ${color}Name                     PID   CPU%   MEM%      TIME
