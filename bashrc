@@ -1,6 +1,6 @@
 # .bashrc
 
-unalias :
+unalias : 2>/dev/null
 
 if [ -f /etc/bashrc ]; then
   . /etc/bashrc
