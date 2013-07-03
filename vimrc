@@ -1,6 +1,6 @@
 "allow backspacing over everything in insert mode
 set nocompatible        " Not backward compatible
-set background=dark     " I always use a dark background
+"set background=dark     " I always use a dark background
 
 " Turn on plugins and filetype indention
 filetype plugin on
@@ -86,6 +86,9 @@ syn sync fromstart
 "hi String	term=underline cterm=NONE ctermfg=Red ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
 "hi Special term=underline cterm=NONE ctermfg=DarkRed ctermbg=NONE gui=NONE guifg=#ffa0a0 guibg=NONE
 hi Identifier cterm=bold ctermfg=darkgreen
+hi Comment ctermfg=lightblue
+hi LineNr ctermfg=darkgrey
+hi String ctermfg=blue cterm=bold
 
 " -----------------------------------------------------
 

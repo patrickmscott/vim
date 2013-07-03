@@ -85,12 +85,13 @@ syn match       goType              /\<func\>/
 syn match       goDeclaration       /^func\>/
 
 " Predefined functions and values
-syn keyword     goBuiltins          append cap close complex copy imag len
-syn keyword     goBuiltins          make new panic print println real recover
+syn keyword     goBuiltins          append cap close complex copy delete imag
+syn keyword     goBuiltins          len make new panic print println real
+syn keyword     goBuiltins          recover
 syn keyword     goConstants         iota true false nil
 
 hi def link     goBuiltins          Keyword
-hi def link     goConstants         Keyword
+hi def link     goConstants         Constant
 
 " Comments; their contents
 syn keyword     goTodo              contained TODO FIXME XXX BUG
@@ -161,6 +162,12 @@ syn match       goImaginary         "\<\d\+[Ee][-+]\d\+i\>"
 
 hi def link     goImaginary         Number
 
+" Function/Struct declaration
+syn match       goFunction          "\%(func\s\+\)\@<=\h\w*"
+hi def link     goFunction          Function
+syn match       goStruct            "\%(type\s\+\)\@<=\h\w*"
+hi def link     goStruct            Function
+
 " Spaces after "[]"
 if go_highlight_array_whitespace_error != 0
   syn match goSpaceError display "\(\[\]\)\@<=\s\+"
@@ -181,7 +188,7 @@ if go_highlight_extra_types != 0
   syn match goExtraType /\<bytes\.\(Buffer\)\>/
   syn match goExtraType /\<io\.\(Reader\|Writer\|ReadWriter\|ReadWriteCloser\)\>/
   syn match goExtraType /\<\(os\.Error\)\>/
-  syn match goExtraType /\<reflect\.\w*\(Type\|Value\)\>/
+  syn match goExtraType /\<reflect\.\w*\(Type\|Value\|Kind\)\>/
   syn match goExtraType /\<unsafe\.Pointer\>/
 endif
 

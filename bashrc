@@ -25,3 +25,7 @@ alias ::::::::='cd ../../../../../../../'
 
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
 export VISUAL=vi
+
+TERM=xterm-256color
+GOROOT=/usr/local/src/go
+PATH=$PATH:/usr/local/src/go/bin
