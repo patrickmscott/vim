@@ -89,6 +89,7 @@ hi Identifier cterm=bold ctermfg=darkgreen
 hi Comment ctermfg=lightblue
 hi LineNr ctermfg=darkgrey
 hi String ctermfg=blue cterm=bold
+hi Operator ctermfg=magenta
 
 " -----------------------------------------------------
 
@@ -99,6 +100,10 @@ set noequalalways
 set ch=1
 set is " Incrementally show the search as we are typing it in
 set matchtime=3
+
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+      \ . "> trans<" . synIDattr(synID(line("."),col("."),1),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Go to the column position and line
 map ' `

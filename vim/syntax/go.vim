@@ -168,6 +168,10 @@ hi def link     goFunction          Function
 syn match       goStruct            "\%(type\s\+\)\@<=\h\w*"
 hi def link     goStruct            Function
 
+" Operators
+syn match       goOperators         "[-+=!%^&*\[\]|.;:?<>]\|/\([^/]\|$\)"
+hi def link     goOperators         Operator
+
 " Spaces after "[]"
 if go_highlight_array_whitespace_error != 0
   syn match goSpaceError display "\(\[\]\)\@<=\s\+"
