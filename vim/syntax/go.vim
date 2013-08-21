@@ -67,7 +67,7 @@ hi def link     goLabel             Label
 hi def link     goRepeat            Repeat
 
 " Predefined types
-syn keyword     goType              chan map bool string
+syn keyword     goType              chan map bool string error
 syn keyword     goSignedInts        int int8 int16 int32 int64
 syn keyword     goUnsignedInts      byte uint uint8 uint16 uint32 uint64 uintptr
 syn keyword     goFloats            float32 float64
@@ -92,6 +92,10 @@ syn keyword     goConstants         iota true false nil
 
 hi def link     goBuiltins          Keyword
 hi def link     goConstants         Constant
+
+" Operators
+syn match       goOperators         "[-+=!%^&*\[\]|.;:?<>/]"
+hi def link     goOperators         Operator
 
 " Comments; their contents
 syn keyword     goTodo              contained TODO FIXME XXX BUG
@@ -168,10 +172,6 @@ hi def link     goFunction          Function
 syn match       goStruct            "\%(type\s\+\)\@<=\h\w*"
 hi def link     goStruct            Function
 
-" Operators
-syn match       goOperators         "[-+=!%^&*\[\]|.;:?<>]\|/\([^/]\|$\)"
-hi def link     goOperators         Operator
-
 " Spaces after "[]"
 if go_highlight_array_whitespace_error != 0
   syn match goSpaceError display "\(\[\]\)\@<=\s\+"
@@ -190,7 +190,9 @@ endif
 " Extra types commonly seen
 if go_highlight_extra_types != 0
   syn match goExtraType /\<bytes\.\(Buffer\)\>/
-  syn match goExtraType /\<io\.\(Reader\|Writer\|ReadWriter\|ReadWriteCloser\)\>/
+  syn match goExtraType /\<io\.\(Reader\|Writer\|Closer\)\>/
+  syn match goExtraType /\<io\.\(ReadWriter\|ReadCloser\|WriteCloser\)\>/
+  syn match goExtraType /\<io\.\(ReadWriteCloser\)\>/
   syn match goExtraType /\<\(os\.Error\)\>/
   syn match goExtraType /\<reflect\.\w*\(Type\|Value\|Kind\)\>/
   syn match goExtraType /\<unsafe\.Pointer\>/

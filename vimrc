@@ -1,9 +1,7 @@
 "allow backspacing over everything in insert mode
 set nocompatible        " Not backward compatible
-"set background=dark     " I always use a dark background
 
 " Turn on plugins and filetype indention
-filetype plugin on
 filetype plugin indent on
 
 set ttyscroll=5         " Used to completely redraw the screen instead of
@@ -20,9 +18,9 @@ retab
 
 " Highlight columns 81 and 82
 function! HighlightTooLongLines()
-  highlight def link RightMargin Error
+  hi def link RightMargin Error
   if &textwidth != 0
-    exec 'match RightMargin /\%<' . (&textwidth + 3) . 'v.\%>' . (&textwidth + 1) . 'v/'
+    exec 'match RightMargin /\%<'.(&textwidth + 3).'v.\%>'.(&textwidth + 1).'v/'
   endif
 endfunction
 augroup filetypedetect
@@ -89,7 +87,8 @@ hi Identifier cterm=bold ctermfg=darkgreen
 hi Comment ctermfg=lightblue
 hi LineNr ctermfg=darkgrey
 hi String ctermfg=blue cterm=bold
-hi Operator ctermfg=magenta
+hi Operator ctermfg=grey
+hi Directory ctermfg=cyan
 
 " -----------------------------------------------------
 
@@ -100,10 +99,6 @@ set noequalalways
 set ch=1
 set is " Incrementally show the search as we are typing it in
 set matchtime=3
-
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-      \ . "> trans<" . synIDattr(synID(line("."),col("."),1),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Go to the column position and line
 map ' `
