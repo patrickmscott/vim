@@ -12,6 +12,7 @@ Bundle 'bling/vim-airline'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline_theme='molokai'
 
 " Turn on plugins and filetype indention
 filetype plugin indent on
@@ -36,11 +37,17 @@ set is                  " Incrementally show the search as we are typing
 set laststatus=2        " Always show the status line
 set hls                 " Highlight search results
 set wildmenu            " Enable a much cooler tab completion
+set tw=80               " Set the text width to 80 columns
+
+colorscheme molokai
+syn on
+" Small adjustment to molokai scheme for matching parens/braces
+hi MatchParen ctermfg=208 ctermbg=16 cterm=bold
 
 " Highlight columns 81 and 82
 function! HighlightTooLongLines()
   hi def link RightMargin Error
-  exec 'match RightMargin /\%<83v.\%>81v/'
+  exec 'match RightMargin /\%<'.(&tw+3).'v.\%>'.(&tw+1).'v/'
 endfunction
 
 au FileType go setlocal noexpandtab
@@ -57,16 +64,18 @@ nmap <F8> mzgg=G`z
 
 " ;i toggles ignorecase
 noremap ;i :set invic<BAR>:echo "IgnoreCase:".strpart("OffOn",3*&ignorecase,3)<CR>
-" For syntax highlighting
-syntax on
-syn region m start="{" end="}" transparent fold
-syn sync fromstart
-hi Identifier cterm=bold ctermfg=darkgreen
-hi Comment ctermfg=lightblue
-hi LineNr ctermfg=darkgrey
-hi String ctermfg=blue cterm=bold
-hi Operator ctermfg=grey
-hi Directory ctermfg=cyan
+
+"hi Identifier cterm=bold ctermfg=darkgreen
+"hi Comment ctermfg=lightblue
+"hi LineNr ctermfg=darkgrey
+"hi String ctermfg=blue cterm=bold
+"hi Operator ctermfg=grey
+"hi Directory ctermfg=cyan
 
 " Sort the visually selected range by pressing "s"
 vmap s :!sort<CR>
+
+" Helps debug syntax hilight by identifying the applied id.
+map <F10> :echo "hi<".synIDattr(synID(line("."),col("."),1),"name")."> trans<"
+      \ . synIDattr(synID(line("."),col("."),0),"name"). "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

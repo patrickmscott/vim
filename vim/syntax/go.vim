@@ -97,8 +97,8 @@ syn match       goOperators         "[-+=!%^&*\[\]|.;:?<>/]"
 hi def link     goOperators         Operator
 
 " Function/Struct names
-syn match       goName              "\%(func\|type\s\+\)\@<=\h\w*"
-syn match       goName              "\%(func\s*(.*)\s*\)\@<=\h\w*"
+syn match       goName              "\%(\%(func\|type\)\s\+\)\@<=\h\w*"
+syn match       goName              "\%(func\s*([^()]*)\s*\)\@<=\h\w*"
 hi def link     goName              Function
 
 " Comments; their contents
