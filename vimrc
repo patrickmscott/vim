@@ -2,7 +2,7 @@ set nocompatible        " Not backward compatible
 
 " Requied by Vundle
 filetype off
-set rtp+=~/src/vim/vundle/
+set rtp+=./vundle/
 call vundle#rc()
 
 " Let Vundle manage itself
