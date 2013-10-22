@@ -53,6 +53,7 @@ endfunction
 au FileType go setlocal noexpandtab
 au FileType python setlocal sw=4
 au BufNewFile,BufRead * call HighlightTooLongLines()
+au BufEnter * syn sync fromstart
 " Jump to the last line and column edited
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal '\"" | endif
 
