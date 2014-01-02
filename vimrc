@@ -2,7 +2,7 @@ set nocompatible        " Not backward compatible
 
 " Requied by Vundle
 filetype off
-set rtp+=./vundle/
+set rtp+=~/src/vim/vundle/
 call vundle#rc()
 
 " Let Vundle manage itself
@@ -38,6 +38,7 @@ set laststatus=2        " Always show the status line
 set hls                 " Highlight search results
 set wildmenu            " Enable a much cooler tab completion
 set tw=80               " Set the text width to 80 columns
+set sh=bash             " Set the shell to bash for command execution
 
 colorscheme molokai
 syn on

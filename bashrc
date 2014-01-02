@@ -2,14 +2,13 @@
 
 unalias : 2>/dev/null
 
-if [ -f /etc/bashrc ]; then
-  . /etc/bashrc
-elif [ -f /etc/skel/.bashrc ]; then
-  . /etc/skel/.bashrc
-fi
+#if [ -f /etc/bashrc ]; then
+#  . /etc/bashrc
+#elif [ -f /etc/skel/.bashrc ]; then
+#  . /etc/skel/.bashrc
+#fi
 
 # User specific aliases and functions
-alias vi=vim
 alias ls='ls -G --color'
 alias rm='rm -i'
 alias cp='cp -i'
