@@ -10,6 +10,8 @@ Bundle 'gmarik/vundle'
 " Extra cool status bar
 Bundle 'bling/vim-airline'
 
+execute pathogen#infect()
+
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='molokai'
@@ -44,6 +46,11 @@ colorscheme molokai
 syn on
 " Small adjustment to molokai scheme for matching parens/braces
 hi MatchParen ctermfg=208 ctermbg=16 cterm=bold
+hi Normal ctermfg=252 ctermbg=234
+hi LineNr ctermfg=250 ctermbg=234
+hi String ctermfg=227
+hi Type cterm=italic
+hi Member ctermfg=81
 
 " Highlight columns 81 and 82
 function! HighlightTooLongLines()

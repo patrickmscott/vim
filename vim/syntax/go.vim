@@ -93,12 +93,16 @@ hi def link     goBuiltins          Keyword
 hi def link     goConstants         Constant
 
 " Operators
-syn match       goOperators         "[-+=!%^&*\[\]|.;:?<>/]"
+syn match       goOperators         /:=\|\.\|\[\|\]/
 hi def link     goOperators         Operator
 
+" Function invocation
+syn match       goMember            /\.\@<=\h\w*\((\)\@=/
+hi def link     goMember            Member
+
 " Function/Struct names
-syn match       goName              "\%(\%(func\|type\)\s\+\)\@<=\h\w*"
-syn match       goName              "\%(func\s*([^()]*)\s*\)\@<=\h\w*"
+syn match       goName              /\%(\%(func\|type\)\s\+\)\@<=\h\w*/
+syn match       goName              /\%(func\s*([^()]*)\s*\)\@<=\h\w*/
 hi def link     goName              Function
 
 " Comments; their contents
