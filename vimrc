@@ -10,11 +10,12 @@ Bundle 'gmarik/vundle'
 " Extra cool status bar
 Bundle 'bling/vim-airline'
 
-execute pathogen#infect()
-
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='molokai'
+
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt-=preview
 
 " Turn on plugins and filetype indention
 filetype plugin indent on
@@ -42,6 +43,9 @@ set wildmenu            " Enable a much cooler tab completion
 set tw=80               " Set the text width to 80 columns
 set sh=bash             " Set the shell to bash for command execution
 
+set t_ZH=[3m
+set t_ZR=[23m
+
 colorscheme molokai
 syn on
 " Small adjustment to molokai scheme for matching parens/braces
@@ -50,6 +54,7 @@ hi Normal ctermfg=252 ctermbg=234
 hi LineNr ctermfg=250 ctermbg=234
 hi String ctermfg=227
 hi Type cterm=italic
+hi Comment cterm=italic
 hi Member ctermfg=81
 
 " Highlight columns 81 and 82
@@ -74,15 +79,11 @@ nmap <F8> mzgg=G`z
 " ;i toggles ignorecase
 noremap ;i :set invic<BAR>:echo "IgnoreCase:".strpart("OffOn",3*&ignorecase,3)<CR>
 
-"hi Identifier cterm=bold ctermfg=darkgreen
-"hi Comment ctermfg=lightblue
-"hi LineNr ctermfg=darkgrey
-"hi String ctermfg=blue cterm=bold
-"hi Operator ctermfg=grey
-"hi Directory ctermfg=cyan
-
 " Sort the visually selected range by pressing "s"
 vmap s :!sort<CR>
+
+" Shortcut to reload the file.
+map <F5> :e<CR>
 
 " Helps debug syntax hilight by identifying the applied id.
 map <F10> :echo "hi<".synIDattr(synID(line("."),col("."),1),"name")."> trans<"

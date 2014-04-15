@@ -11,7 +11,7 @@ alias ::::::: 'cd ../../../../../../../'
 alias :::::::: 'cd ../../../../../../../../'
 
 set -x VISUAL vi
-set -x TERM rxvt-unicode-256color
+set -x TERM xterm-256color
 
 set -g fish_greeting
 set -g fish_color_user -o cyan
