@@ -14,9 +14,6 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='molokai'
 
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt-=preview
-
 " Turn on plugins and filetype indention
 filetype plugin indent on
 
