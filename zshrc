@@ -10,7 +10,15 @@ ZSH_THEME="custom"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+eval `dircolors`
 unalias : > /dev/null 2>&1
+case "$TERM" in
+xterm)
+  export TERM=xterm-256color
+  ;;
+*)
+  ;;
+esac
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -50,20 +58,23 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(gitignore git go golang ant python ssh-agent svn vagrant vi-mode zsh-syntax-highlighting)
 
+# Add ssh identities
+zstyle :omz:plugins:ssh-agent identities id_rsa_github
+
 source $ZSH/oh-my-zsh.sh
 
 # Custom hightlight colors
-ZSH_HIGHLIGHT_STYLES[alias]='fg=026'
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=026'
-ZSH_HIGHLIGHT_STYLES[function]='fg=026'
-ZSH_HIGHLIGHT_STYLES[command]='fg=026'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=026,underline'
-ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=026'
-ZSH_HIGHLIGHT_STYLES[path]='fg=039'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=039,underline'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[function]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[command]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=blue,underline'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=blue'
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=cyan,underline'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=039'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=039'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
 
 # User configuration
 
@@ -81,8 +92,7 @@ export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-#
+export SSH_KEY_PATH="~/.ssh/id_rsa_github"
 
 # Set all aliases at the end to avoid setting the : alias.
 alias rm="rm -i"
@@ -98,7 +108,13 @@ alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
 export VISUAL=vi
-export TERM=xterm-256color
-ssh-add ~/.ssh/id_rsa_github > /dev/null 2>&1
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+setopt appendhistory
+setopt nosharehistory
+
+# The next line updates PATH for the Google Cloud SDK.
+source /home/pscott/google-cloud-sdk/path.zsh.inc
+
+# The next line enables bash completion for gcloud.
+source /home/pscott/google-cloud-sdk/completion.zsh.inc

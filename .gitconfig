@@ -1,0 +1,11 @@
+[user]
+	email = patrick.scott@transloc.com
+	name = Patrick Scott
+[color]
+	ui = auto
+[push]
+	default = matching
+[core]
+	pager = less -x2 -XF
+[pull]
+	ff = only
