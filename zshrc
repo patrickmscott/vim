@@ -56,10 +56,10 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitignore git go golang ant python ssh-agent svn vagrant vi-mode zsh-syntax-highlighting)
+plugins=(docker gitignore git go golang ant python ssh-agent svn vagrant zsh-syntax-highlighting)
 
 # Add ssh identities
-zstyle :omz:plugins:ssh-agent identities id_rsa_github
+zstyle :omz:plugins:ssh-agent identities id_rsa_github google_compute_engine
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,11 +107,27 @@ alias ::::::="cd ../../../../../../"
 alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
+function maria {
+  port=`docker port mariadb 3306 | awk '{split($0,a,":"); print a[2]}'`
+  mysql -h 127.0.0.1 --port $port $@
+}
+
+function build {
+  args=""
+  for i; do echo "Building $i"; args="$args buildall $i;"; done
+  ssh sea02.transloc.com $args
+}
+
+function docker_clean {
+  docker rmi `docker images | grep none | awk '{print $3}'`
+}
+
 export VISUAL=vi
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 setopt appendhistory
 setopt nosharehistory
+setopt no_prompt_sp
 
 # The next line updates PATH for the Google Cloud SDK.
 source /home/pscott/google-cloud-sdk/path.zsh.inc
