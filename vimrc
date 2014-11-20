@@ -9,6 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Extra cool status bar
 Bundle 'bling/vim-airline'
+" Yaml
+Bundle 'chase/vim-ansible-yaml'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
