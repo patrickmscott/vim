@@ -69,7 +69,7 @@ ${font :bold:size=54}${alignc}${color tan1}${time %l:%M}${font}${color}
 ${voffset}
 ${font :bold:size=8}${color tan1}SYSTEM ${color}${hr 2}${font}${color}
 Uptime: $uptime - Load: $loadavg
-CPU Usage:${color #38cf3d} ${cpu}% ${cpubar}
+CPU Usage: ${color tan1}${freq_g}GHz ${color #38cf3d}${cpu}% ${cpubar}
 ${cpugraph 9040e0 9040e0}
 ${color}RAM Usage: $mem/$memmax - $memperc% $membar
 ${voffset}
