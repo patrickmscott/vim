@@ -79,6 +79,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
 # User configuration
 
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$PATH:/usr/local/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -120,6 +121,10 @@ function build {
 
 function docker_clean {
   docker rmi `docker images | grep none | awk '{print $3}'`
+}
+
+function update_puppet {
+  ssh sea02.transloc.com "~/puppet.sh"
 }
 
 export VISUAL=vi

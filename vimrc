@@ -11,10 +11,17 @@ Bundle 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 " Yaml
 Bundle 'chase/vim-ansible-yaml'
+" Go tools
+Bundle 'fatih/vim-go'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='molokai'
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_command = 'goimports'
 
 " Turn on plugins and filetype indention
 filetype plugin indent on
@@ -48,7 +55,7 @@ set t_ZR=[23m
 colorscheme molokai
 syn on
 " Small adjustment to molokai scheme for matching parens/braces
-hi MatchParen ctermfg=208 ctermbg=16 cterm=bold
+hi MatchParen ctermfg=208 ctermbg=234 cterm=bold
 hi Normal ctermfg=252 ctermbg=234
 hi LineNr ctermfg=250 ctermbg=234
 hi String ctermfg=227
@@ -62,7 +69,6 @@ function! HighlightTooLongLines()
   exec 'match RightMargin /\%<'.(&tw+3).'v.\%>'.(&tw+1).'v/'
 endfunction
 
-au FileType go setlocal noexpandtab
 au FileType python setlocal sw=4
 au BufNewFile,BufRead * call HighlightTooLongLines()
 au BufEnter * syn sync fromstart
