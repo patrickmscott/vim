@@ -13,6 +13,8 @@ Bundle 'bling/vim-airline'
 Bundle 'chase/vim-ansible-yaml'
 " Go tools
 Bundle 'fatih/vim-go'
+" SLS
+Bundle 'saltstack/salt-vim'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -69,7 +71,8 @@ function! HighlightTooLongLines()
   exec 'match RightMargin /\%<'.(&tw+3).'v.\%>'.(&tw+1).'v/'
 endfunction
 
-au FileType python setlocal sw=4
+au FileType gitcommit set tw=72
+au FileType python setlocal ts=4 sw=4 tw=100
 au BufNewFile,BufRead * call HighlightTooLongLines()
 au BufEnter * syn sync fromstart
 " Jump to the last line and column edited

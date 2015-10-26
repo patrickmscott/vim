@@ -80,6 +80,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
 
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/transloc/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -91,6 +92,9 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Disable caps lock
+/usr/bin/setxkbmap -option ctrl:nocaps
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa_github"
@@ -108,26 +112,8 @@ alias ::::::="cd ../../../../../../"
 alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
-function maria {
-  port=`docker port mariadb 3306 | awk '{split($0,a,":"); print a[2]}'`
-  mysql -h 127.0.0.1 --port $port $@
-}
-
-function build {
-  args=""
-  for i; do echo "Building $i"; args="$args buildall $i;"; done
-  ssh sea02.transloc.com $args
-}
-
-function docker_clean {
-  docker rmi `docker images | grep none | awk '{print $3}'`
-}
-
-function update_puppet {
-  ssh sea02.transloc.com "~/puppet.sh"
-}
-
 export VISUAL=vi
+export GOPATH=/transloc/prism/_vendor:/transloc/prism
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 setopt appendhistory
@@ -135,7 +121,7 @@ setopt nosharehistory
 setopt no_prompt_sp
 
 # The next line updates PATH for the Google Cloud SDK.
-source /home/pscott/google-cloud-sdk/path.zsh.inc
+source '/home/pscott/google-cloud-sdk/path.zsh.inc'
 
-# The next line enables bash completion for gcloud.
-source /home/pscott/google-cloud-sdk/completion.zsh.inc
+# The next line enables shell command completion for gcloud.
+source '/home/pscott/google-cloud-sdk/completion.zsh.inc'
