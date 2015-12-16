@@ -202,6 +202,7 @@ for_window [class="^Pavucontrol$"] floating enable
 for_window [class="^Steam$"] floating enable
 for_window [class="^Blueman-manager$"] floating enable
 for_window [class="^XTerm$"] border pixel 2
+for_window [class="^Terminator$"] border pixel 2
 for_window [class="^google-chrome$"] border none
 
 # Do not change window focus using the mouse
