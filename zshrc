@@ -113,7 +113,7 @@ alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
 export VISUAL=vi
-export GOPATH=/transloc/prism/_vendor:/transloc/prism
+export GOPATH=/transloc/transloc/go/_vendor:/transloc/transloc/go
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 setopt appendhistory
