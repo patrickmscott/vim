@@ -193,7 +193,7 @@ bindsym $mod+Shift+Delete exec --no-startup-id $lock
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id xrdb -merge ~/.Xresources
-exec --no-startup-id xautolock -locker $lock
+exec --no-startup-id xautolock -locker "$lock" -time 5
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id ~/src/vim/monitor.sh
 

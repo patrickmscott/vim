@@ -8,5 +8,9 @@ if [[ $? == 0 ]]; then
   xrandr --output HDMI2 --auto --right-of HDMI1
 else
   # Disconnect
+  xrandr --auto
   xrandr --output eDP1 --primary
 fi
+
+# Restart i3 so that the primary display is detected
+i3-msg restart
