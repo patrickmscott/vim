@@ -15,6 +15,8 @@ Bundle 'chase/vim-ansible-yaml'
 Bundle 'fatih/vim-go'
 " SLS
 Bundle 'saltstack/salt-vim'
+" pep8 indent
+Bundle 'hynek/vim-python-pep8-indent'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -49,6 +51,7 @@ set laststatus=2        " Always show the status line
 set hls                 " Highlight search results
 set wildmenu            " Enable a much cooler tab completion
 set tw=80               " Set the text width to 80 columns
+set cc=81               " Highlight the 81 column
 set sh=bash             " Set the shell to bash for command execution
 
 set t_ZH=[3m
@@ -65,15 +68,8 @@ hi Type cterm=italic
 hi Comment cterm=italic
 hi Member ctermfg=81
 
-" Highlight columns 81 and 82
-function! HighlightTooLongLines()
-  hi def link RightMargin Error
-  exec 'match RightMargin /\%<'.(&tw+3).'v.\%>'.(&tw+1).'v/'
-endfunction
-
 au FileType gitcommit set tw=72
-au FileType python setlocal ts=4 sw=4 tw=100
-au BufNewFile,BufRead * call HighlightTooLongLines()
+au FileType python setlocal ts=4 sw=4 tw=100 cc=101
 au BufEnter * syn sync fromstart
 " Jump to the last line and column edited
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal '\"" | endif
