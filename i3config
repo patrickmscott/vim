@@ -173,15 +173,16 @@ bar {
 }
 
 # Hook up the volume and brightness buttons
-bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume    exec pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute           exec pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -SIGUSR1 i3status
 bindsym XF86MonBrightnessDown   exec xbacklight -dec 10%
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 10%
 bindsym $mod+XF86AudioMute      exec pavucontrol 
 
 # Detect monitors and change output
 bindsym F7 exec --no-startup-id ~/src/vim/monitor.sh
+bindsym F8 exec --no-startup-id ~/src/vim/wifi.sh
 
 # Swap the current workspace to the right. Useful after plugging in monitors
 bindsym $mod+x move workspace to output right
@@ -205,7 +206,7 @@ for_window [class="^Blueman-manager$"] floating enable
 for_window [class="^XTerm$"] border pixel 2
 for_window [class="^Terminator$"] border pixel 2
 for_window [class="^URxvt$"] border pixel 2
-for_window [class="^google-chrome$"] border none
+for_window [class="^Google-chrome$"] border none
 
 # Do not change window focus using the mouse
 focus_follows_mouse no

@@ -70,6 +70,7 @@ hi Member ctermfg=81
 
 au FileType gitcommit set tw=72
 au FileType python setlocal ts=4 sw=4 tw=100 cc=101
+au BufEnter *.pkg setlocal filetype=dosini
 au BufEnter * syn sync fromstart
 " Jump to the last line and column edited
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal '\"" | endif

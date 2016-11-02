@@ -93,9 +93,6 @@ export PATH="$PATH:/transloc/go/bin"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Disable caps lock
-/usr/bin/setxkbmap -option ctrl:nocaps
-
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa_github"
 
@@ -113,7 +110,7 @@ alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
 export VISUAL=vi
-export GOPATH=/transloc/transloc/go/_vendor:/transloc/transloc/go
+export GOPATH=/transloc/transloc/third_party/go:/transloc/transloc/go:/transloc/transloc/go/_gen
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 setopt appendhistory
