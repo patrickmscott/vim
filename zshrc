@@ -109,10 +109,10 @@ alias ::::::="cd ../../../../../../"
 alias :::::::="cd ../../../../../../../"
 alias ::::::::="cd ../../../../../../../../"
 
+export VIRTUAL_ENV_DISABLE_PROMPT=yes
 export VISUAL=vi
 export GOPATH=/transloc/transloc/third_party/go:/transloc/transloc/go:/transloc/transloc/go/_gen
 
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 setopt appendhistory
 setopt nosharehistory
 setopt no_prompt_sp
@@ -125,3 +125,5 @@ source '/home/pscott/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/home/pscott/google-cloud-sdk/completion.zsh.inc'
+
+source <(kubectl completion zsh)

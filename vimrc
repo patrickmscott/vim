@@ -17,6 +17,8 @@ Bundle 'fatih/vim-go'
 Bundle 'saltstack/salt-vim'
 " pep8 indent
 Bundle 'hynek/vim-python-pep8-indent'
+" rust
+Bundle 'rust-lang/rust.vim'
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
