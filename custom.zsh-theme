@@ -15,8 +15,17 @@ function short_pwd {
   echo $dir
 }
 
+function venv {
+  v=""
+  if [ ! -z "$VIRTUAL_ENV" ]; then
+    v="(`basename \"$VIRTUAL_ENV\"`)"
+  fi
+  echo $v
+}
+
 PROMPT='%F{green}$(short_pwd) %F{cyan}[%f '
-RPROMPT='$(git_prompt_info) %F{cyan}] %F{yellow}%D{%H:%M}%f'
+#RPROMPT='$(git_prompt_info) %F{cyan}] %F{yellow}%D{%H:%M}%f$(venv)'
+RPROMPT='$(git_prompt_info) %F{cyan}] %F{yellow}$(venv)'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{magenta}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
