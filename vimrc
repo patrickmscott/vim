@@ -2,23 +2,28 @@ set nocompatible        " Not backward compatible
 
 " Requied by Vundle
 filetype off
-set rtp+=~/src/vim/vundle/
-call vundle#rc()
+set rtp+=~/src/vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage itself
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 " Extra cool status bar
-Bundle 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Yaml
-Bundle 'chase/vim-ansible-yaml'
+Plugin 'chase/vim-ansible-yaml'
 " Go tools
-Bundle 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 " SLS
-Bundle 'saltstack/salt-vim'
+Plugin 'saltstack/salt-vim'
 " pep8 indent
-Bundle 'hynek/vim-python-pep8-indent'
+Plugin 'hynek/vim-python-pep8-indent'
 " rust
-Bundle 'rust-lang/rust.vim'
+Plugin 'rust-lang/rust.vim'
+" mustache
+Plugin 'mustache/vim-mustache-handlebars'
+
+call vundle#end()
 
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
@@ -28,6 +33,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = 'goimports'
+let g:rust_recommended_style = 0
 
 " Turn on plugins and filetype indention
 filetype plugin indent on
@@ -96,3 +102,13 @@ map <F5> :e<CR>
 map <F10> :echo "hi<".synIDattr(synID(line("."),col("."),1),"name")."> trans<"
       \ . synIDattr(synID(line("."),col("."),0),"name"). "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" Map tab to completion during insert
+function! CleverTab()
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>

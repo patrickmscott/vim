@@ -56,7 +56,8 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(docker gitignore git go golang ant python ssh-agent svn vagrant zsh-syntax-highlighting)
+plugins=(docker gitignore git golang ant python ssh-agent vagrant zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+autoload -U compinit && compinit
 
 # Add ssh identities
 zstyle :omz:plugins:ssh-agent identities id_rsa_github google_compute_engine
@@ -75,12 +76,12 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=cyan,underline'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=blue,bold'
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=cyan'
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # User configuration
 
 export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/transloc/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -111,7 +112,10 @@ alias ::::::::="cd ../../../../../../../../"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
 export VISUAL=vi
-export GOPATH=/transloc/transloc/third_party/go:/transloc/transloc/go:/transloc/transloc/go/_gen
+
+function tl {
+  workon transloc && cd /transloc/transloc && eval `make env`
+}
 
 setopt appendhistory
 setopt nosharehistory
