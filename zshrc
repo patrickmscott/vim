@@ -60,7 +60,10 @@ plugins=(docker gitignore git golang ant python ssh-agent vagrant zsh-syntax-hig
 autoload -U compinit && compinit
 
 # Add ssh identities
-zstyle :omz:plugins:ssh-agent identities id_rsa_github google_compute_engine
+if [ -z "$SSH_TTY" ]; then
+  zstyle :omz:plugins:ssh-agent identities id_rsa_github google_compute_engine
+  export SSH_KEY_PATH="~/.ssh/id_rsa_github"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -80,8 +83,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
 # User configuration
 
-export PATH="/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export PATH="$PATH:/usr/local/go/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -93,9 +95,6 @@ export PATH="$PATH:/usr/local/go/bin"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/id_rsa_github"
 
 # Set all aliases at the end to avoid setting the : alias.
 alias rm="rm -i"
@@ -113,21 +112,27 @@ alias ::::::::="cd ../../../../../../../../"
 export VIRTUAL_ENV_DISABLE_PROMPT=yes
 export VISUAL=vi
 
-function tl {
-  workon transloc && cd /transloc/transloc && eval `make env`
-}
-
 setopt appendhistory
 setopt nosharehistory
 setopt no_prompt_sp
 
 export WORKON_HOME=$HOME/.virtualenvs
-source '/usr/local/bin/virtualenvwrapper.sh'
+if [ -e '/usr/local/bin/virtualenvwrapper.sh' ]; then
+  source '/usr/local/bin/virtualenvwrapper.sh'
+fi
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/pscott/google-cloud-sdk/path.zsh.inc'
+if [ -d "$HOME/google-cloud-sdk" ]; then
+  # The next line updates PATH for the Google Cloud SDK.
+  source "$HOME/google-cloud-sdk/path.zsh.inc"
 
-# The next line enables shell command completion for gcloud.
-source '/home/pscott/google-cloud-sdk/completion.zsh.inc'
+  # The next line enables shell command completion for gcloud.
+  source "$HOME/google-cloud-sdk/completion.zsh.inc"
+fi
 
-source <(kubectl completion zsh)
+if [ -d "/usr/share/google-cloud-sdk" ]; then
+  source "/usr/share/google-cloud-sdk/completion.zsh.inc";
+fi
+
+if command -v kubectl; then
+  source <(kubectl completion zsh)
+fi
