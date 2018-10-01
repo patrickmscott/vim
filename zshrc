@@ -133,6 +133,6 @@ if [ -d "/usr/share/google-cloud-sdk" ]; then
   source "/usr/share/google-cloud-sdk/completion.zsh.inc";
 fi
 
-if command -v kubectl; then
+if command -v kubectl > /dev/null; then
   source <(kubectl completion zsh)
 fi
