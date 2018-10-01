@@ -22,6 +22,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'rust-lang/rust.vim'
 " mustache
 Plugin 'mustache/vim-mustache-handlebars'
+" wakatime
+Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()
 
@@ -29,9 +31,13 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='molokai'
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_arguments = 1
 let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_fmt_command = 'goimports'
 let g:rust_recommended_style = 0
 
